@@ -1,19 +1,23 @@
 package com.meuapp.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class UserModel {
+public class UserModel implements Serializable{
 
-    @Id
+    private static final long serialVersionUID = 1L;
+    
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nome;
+    private Long id; 
+    private String nome;   
     private String email;
-
+    
     public Long getId() {
         return id;
     }
@@ -37,5 +41,5 @@ public class UserModel {
     public void setEmail(String email) {
         this.email = email;
     }
-    // getters e setters
+ 
 }

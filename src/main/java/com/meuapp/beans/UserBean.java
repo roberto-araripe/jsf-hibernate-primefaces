@@ -1,21 +1,22 @@
 package com.meuapp.beans;
 
-import com.meuapp.model.UserModel;
-import com.meuapp.service.UserService;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.List;
+
+import com.meuapp.model.UserModel;
+import com.meuapp.service.UserService;
 
 @Named
 @ViewScoped
-public class UserBean {
+public class UserBean{
 
-    @Inject
-    private UserService usuarioService;
+	
+    private UserService usuarioService = new UserService();
     
     private UserModel usuario = new UserModel();
     private List<UserModel> usuarios;
@@ -27,7 +28,6 @@ public class UserBean {
     public void setUsuario(UserModel usuario) {
         this.usuario = usuario;
     }
-
 
     public void carregarUsuarios() {
         usuarios = usuarioService.listarUsuarios();

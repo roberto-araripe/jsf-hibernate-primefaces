@@ -1,17 +1,13 @@
 package com.meuapp.service;
 
+import java.util.List;
+
 import com.meuapp.dao.UserDAO;
 import com.meuapp.model.UserModel;
 
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import java.util.List;
-
-@Stateless
 public class UserService {
 
-    @Inject
-    private UserDAO userDAO;
+	private UserDAO userDAO = new UserDAO();
 
     public void salvarUsuario(UserModel usuario) {
         userDAO.salvar(usuario);

@@ -1,18 +1,28 @@
 package com.meuapp.dao;
 
-import com.meuapp.model.UserModel;
+import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.List;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.meuapp.model.UserModel;
+
 
 public class UserDAO {
 	
-    @PersistenceContext
-    private EntityManager entityManager;
-
+	private EntityManagerFactory entityFactory;
+	private EntityManager entityManager;
+	
+    public UserDAO() {
+    	this.entityFactory = Persistence.createEntityManagerFactory("exemplo-jpa");
+    	this.entityManager = entityFactory.createEntityManager();
+    }
+	
     public void salvar(UserModel usuario) {
+    	entityManager.getTransaction().begin();
         entityManager.persist(usuario);
+        entityManager.getTransaction().commit();
     }
 
     public UserModel atualizar(UserModel usuario) {
