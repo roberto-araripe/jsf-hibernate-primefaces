@@ -32,8 +32,21 @@ public class UserDAO {
     public void excluir(Long id) {
         UserModel usuario = entityManager.find(UserModel.class, id);
         if (usuario != null) {
+        	entityManager.getTransaction().begin();
             entityManager.remove(usuario);
+            entityManager.getTransaction().commit();
         }
+    }
+    
+    public void update(UserModel usuario) {
+    	entityManager.getTransaction().begin();
+
+        entityManager.createQuery("UPDATE UserModel u SET u.nome = '" + usuario.getNome()
+                                  + "', u.email = '"+ usuario.getEmail() + 
+                                  "' WHERE u.id =" + usuario.getId()).executeUpdate();
+        
+        entityManager.getTransaction().commit();
+                
     }
 
     public UserModel buscarPorId(Long id) {

@@ -14,7 +14,7 @@ public class UserService {
     }
 
     public void atualizarUsuario(UserModel usuario) {
-        userDAO.atualizar(usuario);
+        userDAO.update(usuario);
     }
 
     public void excluirUsuario(Long id) {

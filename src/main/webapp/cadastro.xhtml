@@ -5,24 +5,25 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Cadastro/Edição de Usuário</title>
+	<h:outputStylesheet library="css" name = "file.css"/>
 </h:head>
 <h:body>
 	<h1>Cadastro/Edição de Usuário</h1>
 
 	<h:form>
-		<p:messages autoUpdate="true" />
+		<p:messages autoUpdate="true" id="msg" />
 
 		<p:panelGrid columns="2">
 			<h:outputLabel for="nome" value="Nome:" />
-			<p:inputText id="nome" value="#{userBean.usuario.nome}" />
+			<p:inputText id="nome" value="#{userBean.usuario.nome}" required="true" requiredMessage="Campo Obrigatório" placeholder="Seu Nome" />
 
 			<h:outputLabel for="email" value="E-mail:" />
-			<p:inputText id="email" value="#{userBean.usuario.email}" />
+			<p:inputText id="email" value="#{userBean.usuario.email}"  required="true" requiredMessage="Campo Obrigatório" placeholder="seuemail@dominio.com"/>
 		</p:panelGrid>		
 	
 		<p:commandButton value="Salvar" action="#{userBean.salvarUsuario}" />
-
-		<p:commandButton value="Cancelar" action="#{userBean.cancelarEdicao}" />
+	
+		<p:commandButton value="Cancelar" style="margin-left: 10px" action="#{userBean.cancelarEdicao}" />
 		
 	</h:form>
 </h:body>
