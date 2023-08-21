@@ -5,28 +5,32 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Lista de Usuários</title>
+	<h:outputStylesheet library="css" name = "file.css"/>
 </h:head>
 <h:body>
 	<h1>Lista de Usuários</h1>
-
-	<p:dataTable value="#{userBean.usuarios}" var="user">
+ <h:form>
+	<p:dataTable value="#{userBean.carregarUsuarios()}" var="user">
 		<p:column headerText="ID">
-			<h:outputText value="#{user.id}" />
+			<p:inputText value="#{user.model.id}" disabled="true" />
 		</p:column>
 		<p:column headerText="Nome">
-			<h:outputText value="#{userBean.usuarios}" />
+			<p:inputText id="nome" value="#{user.model.nome}" disabled="#{user.edit}" />
 		</p:column>
 		<p:column headerText="E-mail">
-			<h:outputText value="#{user.email}" />
+			<p:inputText id="email" value="#{user.model.email}" disabled="#{user.edit}" />
 		</p:column>
 		<p:column headerText="Ações">
-			<p:commandButton value="Editar"
+			<p:commandButton value="Editar" icon="ui-icon-arrowrefresh-1-n"
 				action="#{userBean.editarUsuario(user)}" />
-			<p:commandButton value="Excluir"
+			<p:commandButton style="margin-left: 10px" value="Excluir"
 				action="#{userBean.excluirUsuario(user)}" />
+			<p:commandButton value="Salvar" style="margin-left: 10px" action="#{userBean.editar(user)}" disabled="#{user.edit}" />
+		
 		</p:column>
 	</p:dataTable>
-
+ </h:form>
+	
 	<h:form id="rootform">
 		<p:commandButton value="Novo Usuário"
 			action="cadastro?faces-redirect=true" />

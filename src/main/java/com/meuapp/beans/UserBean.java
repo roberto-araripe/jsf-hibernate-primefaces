@@ -10,7 +10,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import com.meuapp.model.UserModel;
-import com.meuapp.model.UserResponse;
+import com.meuapp.response.UserResponse;
 import com.meuapp.service.UserService;
 
 @Named
@@ -48,7 +48,6 @@ public class UserBean {
 		}
 
 		return response;
-
 	}
 
 	public void novoUsuario() {
@@ -83,8 +82,7 @@ public class UserBean {
 		this.response.clear();
 		this.response.addAll(newValue);
     	
-    	return INDEX;
-		/*usuarioService.atualizarUsuario(usuario); */
+    	return INDEX;		
     }
 	
 	public String editar(UserResponse usuario) {
@@ -93,8 +91,7 @@ public class UserBean {
 	   
 	   this.response = null;
 	   
-	   return INDEX;
-	   
+	   return INDEX;	   
 	}
 
 	public String excluirUsuario(UserResponse usuario) {
